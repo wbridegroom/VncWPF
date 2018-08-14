@@ -1,2 +1,3 @@
 # VpnWPF
-VNC Client written in WPF
+A simple VNC Client written in WPF
+
