@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VncWpf"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:VncViewModel}"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel LastChildFill="True">
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar Height="30">
+                <Label Content="Hostname"></Label>
+                <TextBox Width="150" Text="{Binding Hostname}"></TextBox>
+                <Button Content="Connect" Command="{Binding Connect}" VerticalAlignment="Center" ToolTip="Connect" />
+                <Button Content="Disconnect" Command="{Binding Disconnect}"  VerticalAlignment="Center" ToolTip="Disconnect" />
+                <Separator />
+                <Button ToolTip="Send Ctrl-Alt-Del" Content="Ctrl-Alt-Del" Command="{Binding SendCtrlAltDel}" VerticalAlignment="Center"/>
+                <Label Content="Stretch Mode:" VerticalAlignment="Center" />
+                <ComboBox Width="150" VerticalAlignment="Center" 
+                          IsEnabled="{Binding IsConnected}"
+                          ItemsSource="{x:Static local:VncViewModel.STRETCH_MODES}" 
+                          DisplayMemberPath="Name"
+                          SelectedItem="{Binding SelectedStretchMode}" />
+                <Separator />
+            </ToolBar>
+        </ToolBarTray>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem></StatusBarItem>
+        </StatusBar>
+        <ScrollViewer CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <local:VncControl DataContext="{Binding Mode=OneWay}" />
+        </ScrollViewer>
+    </DockPanel>
 </Window>

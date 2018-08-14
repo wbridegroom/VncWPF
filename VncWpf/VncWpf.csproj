@@ -54,6 +54,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\ConnectCommand.cs" />
+    <Compile Include="Commands\DisconnectCommand.cs" />
+    <Compile Include="Commands\SendCtrlAltDelCommand.cs" />
+    <Compile Include="Rfb\BigEndianReader.cs" />
+    <Compile Include="Rfb\BigEndianWriter.cs" />
+    <Compile Include="Rfb\EncodedRect.cs" />
+    <Compile Include="Rfb\FrameBuffer.cs" />
+    <Compile Include="Rfb\PixelFormat.cs" />
+    <Compile Include="Rfb\RfbClient.cs" />
+    <Compile Include="Rfb\RfbProtocol.cs" />
+    <Compile Include="VncViewModel.cs" />
+    <Compile Include="VncControl.xaml.cs">
+      <DependentUpon>VncControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,6 +81,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="VncControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
